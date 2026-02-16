@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enregistrer un Don - BNGRC</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css">
 </head>
 <body>
     <div class="container">
@@ -14,18 +14,18 @@
         </header>
 
         <nav class="main-nav">
-            <a href="/dashboard">📊 Dashboard</a>
-            <a href="/villes">🏙️ Villes</a>
-            <a href="/besoins">📋 Besoins</a>
-            <a href="/dons" class="active">🎁 Dons</a>
-            <a href="/distributions">📦 Distributions</a>
+            <a href="<?= BASE_URL ?>/dashboard">📊 Dashboard</a>
+            <a href="<?= BASE_URL ?>/villes">🏙️ Villes</a>
+            <a href="<?= BASE_URL ?>/besoins">📋 Besoins</a>
+            <a href="<?= BASE_URL ?>/dons" class="active">🎁 Dons</a>
+            <a href="<?= BASE_URL ?>/distributions">📦 Distributions</a>
         </nav>
 
         <div class="section">
             <div class="form-container">
                 <h2>🎁 Nouveau Don</h2>
                 
-                <form method="POST" action="/dons/enregistrer" class="form">
+                <form method="POST" action="<?= BASE_URL ?>/dons/enregistrer" class="form">
                     <div class="form-group">
                         <label for="donateur">👤 Nom du Donateur</label>
                         <input type="text" 
@@ -91,7 +91,7 @@
                     </div>
 
                     <div class="form-actions">
-                        <a href="/dons" class="btn btn-secondary">↩️ Annuler</a>
+                        <a href="<?= BASE_URL ?>/dons" class="btn btn-secondary">↩️ Annuler</a>
                         <button type="submit" class="btn btn-success">🎁 Enregistrer le Don</button>
                     </div>
                 </form>

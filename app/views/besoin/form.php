@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saisir un Besoin - BNGRC</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css">
 </head>
 <body>
     <div class="container">
@@ -14,18 +14,18 @@
         </header>
 
         <nav class="main-nav">
-            <a href="/dashboard">📊 Dashboard</a>
-            <a href="/villes">🏙️ Villes</a>
-            <a href="/besoins" class="active">📋 Besoins</a>
-            <a href="/dons">🎁 Dons</a>
-            <a href="/distributions">📦 Distributions</a>
+            <a href="<?= BASE_URL ?>/dashboard">📊 Dashboard</a>
+            <a href="<?= BASE_URL ?>/villes">🏙️ Villes</a>
+            <a href="<?= BASE_URL ?>/besoins" class="active">📋 Besoins</a>
+            <a href="<?= BASE_URL ?>/dons">🎁 Dons</a>
+            <a href="<?= BASE_URL ?>/distributions">📦 Distributions</a>
         </nav>
 
         <div class="section">
             <div class="form-container">
                 <h2>📋 <?php echo isset($besoin_data) ? 'Modifier le Besoin' : 'Nouveau Besoin'; ?></h2>
                 
-                <form method="POST" action="/besoins/enregistrer" class="form">
+                <form method="POST" action="<?= BASE_URL ?>/besoins/enregistrer" class="form">
                     <?php if(isset($besoin_data)): ?>
                         <input type="hidden" name="id_besoin" value="<?php echo $besoin_data['id_besoin']; ?>">
                     <?php endif; ?>
@@ -94,7 +94,7 @@
                     </div>
 
                     <div class="form-actions">
-                        <a href="/besoins" class="btn btn-secondary">↩️ Annuler</a>
+                        <a href="<?= BASE_URL ?>/besoins" class="btn btn-secondary">↩️ Annuler</a>
                         <button type="submit" class="btn btn-primary">
                             <?php echo isset($besoin_data) ? '💾 Mettre à jour' : '➕ Enregistrer'; ?>
                         </button>

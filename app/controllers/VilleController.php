@@ -21,11 +21,11 @@ class VilleController {
         ]);
     }
     
-    public function form() {
+    public function form($id = null) {
         $ville_data = null;
         
-        if(isset($_GET['id'])) {
-            $ville_data = $this->villeModel->find($_GET['id']);
+        if($id) {
+            $ville_data = $this->villeModel->find($id);
         }
         
         Flight::render('ville/form', [
@@ -43,19 +43,19 @@ class VilleController {
             if(!empty(Flight::request()->data->id_ville)) {
                 // Mise à jour
                 $this->villeModel->update(Flight::request()->data->id_ville, $data);
-                Flight::redirect('/villes?success=update');
+                Flight::redirect(BASE_URL . '/villes?success=update');
             } else {
                 // Création
                 $this->villeModel->create($data);
-                Flight::redirect('/villes?success=create');
+                Flight::redirect(BASE_URL . '/villes?success=create');
             }
         }
     }
     
-    public function supprimer() {
-        if(isset($_GET['id'])) {
-            $this->villeModel->delete($_GET['id']);
-            Flight::redirect('/villes?success=delete');
+    public function supprimer($id) {
+        if($id) {
+            $this->villeModel->delete($id);
+            Flight::redirect(BASE_URL . '/villes?success=delete');
         }
     }
 }

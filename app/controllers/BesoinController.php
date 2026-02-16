@@ -27,11 +27,11 @@ class BesoinController {
         ]);
     }
     
-    public function form() {
+    public function form($id = null) {
         $besoin_data = null;
         
-        if(isset($_GET['id'])) {
-            $besoin_data = $this->besoinModel->getWithDetails($_GET['id']);
+        if($id) {
+            $besoin_data = $this->besoinModel->getWithDetails($id);
         }
         
         $villes = $this->villeModel->all('nom_ville', 'ASC');
@@ -55,19 +55,19 @@ class BesoinController {
             if(!empty(Flight::request()->data->id_besoin)) {
                 // Mise à jour
                 $this->besoinModel->update(Flight::request()->data->id_besoin, $data);
-                Flight::redirect('/besoins?success=update');
+                Flight::redirect(BASE_URL . '/besoins?success=update');
             } else {
                 // Création
                 $this->besoinModel->create($data);
-                Flight::redirect('/besoins?success=create');
+                Flight::redirect(BASE_URL . '/besoins?success=create');
             }
         }
     }
     
-    public function supprimer() {
-        if(isset($_GET['id'])) {
-            $this->besoinModel->delete($_GET['id']);
-            Flight::redirect('/besoins?success=delete');
+    public function supprimer($id) {
+        if($id) {
+            $this->besoinModel->delete($id);
+            Flight::redirect(BASE_URL . '/besoins?success=delete');
         }
     }
 }

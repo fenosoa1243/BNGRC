@@ -28,9 +28,9 @@ class DistributionController {
     public function executer() {
         try {
             $nb_distributions = $this->distributionModel->simulerDispatch();
-            Flight::redirect('/distributions?success=dispatch&nb=' . $nb_distributions);
+            Flight::redirect(BASE_URL . '/distributions?success=dispatch&nb=' . $nb_distributions);
         } catch(\Exception $e) {
-            Flight::redirect('/distributions/simuler?error=dispatch&message=' . urlencode($e->getMessage()));
+            Flight::redirect(BASE_URL . '/distributions/simuler?error=dispatch&message=' . urlencode($e->getMessage()));
         }
     }
 }

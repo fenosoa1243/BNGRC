@@ -14,11 +14,11 @@
         </header>
 
         <nav class="main-nav">
-            <a href="/dashboard" class="active">📊 Dashboard</a>
-            <a href="/villes">🏙️ Villes</a>
-            <a href="/besoins">📋 Besoins</a>
-            <a href="/dons">🎁 Dons</a>
-            <a href="/distributions">📦 Distributions</a>
+            <a href="<?= BASE_URL ?>/dashboard" class="active">📊 Dashboard</a>
+            <a href="<?= BASE_URL ?>/villes">🏙️ Villes</a>
+            <a href="<?= BASE_URL ?>/besoins">📋 Besoins</a>
+            <a href="<?= BASE_URL ?>/dons">🎁 Dons</a>
+            <a href="<?= BASE_URL ?>/distributions">📦 Distributions</a>
         </nav>
 
         <div class="stats-container">
@@ -64,9 +64,9 @@
         </div>
 
         <div class="quick-actions">
-            <a href="/besoins/nouveau" class="btn btn-primary">➕ Saisir un Besoin</a>
-            <a href="/dons/nouveau" class="btn btn-success">🎁 Enregistrer un Don</a>
-            <a href="/distributions/simuler" class="btn btn-warning">⚡ Simuler Dispatch</a>
+            <a href="<?= BASE_URL ?>/besoins/nouveau" class="btn btn-primary">➕ Saisir un Besoin</a>
+            <a href="<?= BASE_URL ?>/dons/nouveau" class="btn btn-success">🎁 Enregistrer un Don</a>
+            <a href="<?= BASE_URL ?>/distributions/simuler" class="btn btn-warning">⚡ Simuler Dispatch</a>
         </div>
 
         <div class="section">
@@ -125,7 +125,7 @@
     </div>
 
     <footer>
-        <p>© 2026 BNGRC - Projet Final S3</p>
+        <p>ETU004301-ETU004148-ETU003971 @Projet Final S3</p>
     </footer>
 </body>
 </html>

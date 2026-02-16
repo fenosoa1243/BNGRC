@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simuler Distribution - BNGRC</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css">
 </head>
 <body>
     <div class="container">
@@ -14,11 +14,11 @@
         </header>
 
         <nav class="main-nav">
-            <a href="/dashboard">📊 Dashboard</a>
-            <a href="/villes">🏙️ Villes</a>
-            <a href="/besoins">📋 Besoins</a>
-            <a href="/dons">🎁 Dons</a>
-            <a href="/distributions" class="active">📦 Distributions</a>
+            <a href="<?= BASE_URL ?>/dashboard">📊 Dashboard</a>
+            <a href="<?= BASE_URL ?>/villes">🏙️ Villes</a>
+            <a href="<?= BASE_URL ?>/besoins">📋 Besoins</a>
+            <a href="<?= BASE_URL ?>/dons">🎁 Dons</a>
+            <a href="<?= BASE_URL ?>/distributions" class="active">📦 Distributions</a>
         </nav>
 
         <?php if(isset($_GET['error']) && $_GET['error'] == 'dispatch'): ?>
@@ -70,9 +70,9 @@
                 <strong>⚠️ Attention :</strong> Cette action va distribuer automatiquement tous les dons disponibles aux villes selon leurs besoins. Cette opération est irréversible.
             </div>
 
-            <form method="POST" action="/distributions/executer" id="dispatch-form">
+            <form method="POST" action="<?= BASE_URL ?>/distributions/executer" id="dispatch-form">
                 <div class="form-actions-center">
-                    <a href="/distributions" class="btn btn-secondary">↩️ Annuler</a>
+                    <a href="<?= BASE_URL ?>/distributions" class="btn btn-secondary">↩️ Annuler</a>
                     <button type="submit" class="btn btn-warning btn-lg" id="execute-btn">
                         ⚡ Exécuter la Distribution
                     </button>
@@ -94,7 +94,7 @@
 
     <script>
         // Charger les statistiques
-        fetch('/api/dispatch/preview')
+        fetch('<?= BASE_URL ?>/api/dispatch/preview')
             .then(response => response.json())
             .then(data => {
                 if(data.success) {
