@@ -9,6 +9,8 @@ use App\Controllers\VilleController;
 use App\Controllers\BesoinController;
 use App\Controllers\DonController;
 use App\Controllers\DistributionController;
+use App\Controllers\AchatController;
+use App\Controllers\RecapController;
 
 // ========================================
 // ROUTE PAR DÉFAUT
@@ -121,27 +123,27 @@ Flight::route('POST /distributions/executer', function() {
 // ACHATS
 // ========================================
 Flight::route('GET /achats', function() {
-    $controller = new \App\Controllers\AchatController();
+    $controller = new AchatController();
     $controller->liste();
 });
 
 Flight::route('GET /achats/besoins-restants', function() {
-    $controller = new \App\Controllers\AchatController();
+    $controller = new AchatController();
     $controller->besoinsRestants();
 });
 
 Flight::route('POST /achats/simuler', function() {
-    $controller = new \App\Controllers\AchatController();
+    $controller = new AchatController();
     $controller->simuler();
 });
 
 Flight::route('POST /achats/valider', function() {
-    $controller = new \App\Controllers\AchatController();
+    $controller = new AchatController();
     $controller->valider();
 });
 
 Flight::route('POST /achats/annuler-simulation', function() {
-    $controller = new \App\Controllers\AchatController();
+    $controller = new AchatController();
     $controller->annulerSimulation();
 });
 
@@ -149,12 +151,12 @@ Flight::route('POST /achats/annuler-simulation', function() {
 // RÉCAPITULATIF
 // ========================================
 Flight::route('GET /recap', function() {
-    $controller = new \App\Controllers\RecapController();
+    $controller = new RecapController();
     $controller->index();
 });
 
 Flight::route('GET /recap/data', function() {
-    $controller = new \App\Controllers\RecapController();
+    $controller = new RecapController();
     $controller->getData();
 });
 

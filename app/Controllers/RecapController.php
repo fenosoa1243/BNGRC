@@ -54,15 +54,17 @@ class RecapController {
                 t.categorie,
                 COALESCE(SUM(b.quantite * t.prix_unitaire), 0) as besoin_total,
                 COALESCE((
-                    SELECT SUM(dist.quantite_distribuee * t.prix_unitaire)
+                    SELECT SUM(dist.quantite_distribuee * t2.prix_unitaire)
                     FROM distribution dist
                     JOIN don d ON dist.id_don = d.id_don
-                    WHERE d.id_type = t.id_type
+                    JOIN type_besoin t2 ON d.id_type = t2.id_type
+                    WHERE t2.categorie = t.categorie
                 ), 0) as montant_distribue,
                 COALESCE((
-                    SELECT SUM(a.quantite * t.prix_unitaire)
+                    SELECT SUM(a.quantite * t3.prix_unitaire)
                     FROM achat a
-                    WHERE a.id_type = t.id_type AND a.statut = 'valide'
+                    JOIN type_besoin t3 ON a.id_type = t3.id_type
+                    WHERE a.statut = 'valide' AND t3.categorie = t.categorie
                 ), 0) as montant_achete
                 FROM type_besoin t
                 LEFT JOIN besoin b ON t.id_type = b.id_type
