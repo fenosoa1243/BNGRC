@@ -19,6 +19,8 @@
             <a href="/besoins">📋 Besoins</a>
             <a href="/dons">🎁 Dons</a>
             <a href="/distributions" class="active">📦 Distributions</a>
+            <a href="/achats">🛒 Achats</a>
+            <a href="/recap">📈 Récapitulation</a>
         </nav>
 
         <?php if(isset($_GET['error']) && $_GET['error'] == 'dispatch'): ?>

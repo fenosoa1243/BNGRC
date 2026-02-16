@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BNGRC - Aperçu du Design Professionnel</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+        .demo-section {
+            margin: 40px 0;
+            padding: 30px;
+            background: #f7fafc;
+            border-radius: 12px;
+        }
+        .demo-title {
+            font-size: 1.5em;
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏛️ BNGRC - Gestion des Dons</h1>
+            <p class="subtitle">Aperçu du Design Professionnel</p>
+        </header>
+
+        <nav class="main-nav">
+            <a href="#buttons">🎨 Boutons</a>
+            <a href="#cards">📊 Cards</a>
+            <a href="#tables">📋 Tables</a>
+            <a href="#badges">🏷️ Badges</a>
+            <a href="#alerts">⚠️ Alertes</a>
+            <a href="#forms">📝 Formulaires</a>
+        </nav>
+
+        <!-- Buttons Demo -->
+        <div class="section" id="buttons">
+            <h2>Boutons Professionnels</h2>
+            <div class="demo-section">
+                <div class="demo-title">Variantes de Boutons</div>
+                <div class="component-grid">
+                    <button class="btn btn-primary">Primary</button>
+                    <button class="btn btn-success">Success</button>
+                    <button class="btn btn-warning">Warning</button>
+                    <button class="btn btn-danger">Danger</button>
+                    <button class="btn btn-info">Info</button>
+                    <button class="btn btn-secondary">Secondary</button>
+                </div>
+                
+                <div class="demo-title">Tailles</div>
+                <div class="component-grid">
+                    <button class="btn btn-primary btn-small">Small</button>
+                    <button class="btn btn-primary">Normal</button>
+                    <button class="btn btn-primary btn-lg">Large</button>
+                </div>
+                
+                <div class="demo-title">États</div>
+                <div class="component-grid">
+                    <button class="btn btn-primary">Active</button>
+                    <button class="btn btn-primary" disabled>Disabled</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cards Demo -->
+        <div class="section" id="cards">
+            <h2>Cartes Statistiques</h2>
+            <div class="stats-preview">
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-content">
+                        <div class="stat-label">Total Besoins</div>
+                        <div class="stat-value">15,000,000 Ar</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-content">
+                        <div class="stat-label">Besoins Satisfaits</div>
+                        <div class="stat-value">10,000,000 Ar</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⏳</div>
+                    <div class="stat-content">
+                        <div class="stat-label">Besoins Restants</div>
+                        <div class="stat-value">5,000,000 Ar</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tables Demo -->
+        <div class="section" id="tables">
+            <h2>Tableaux Élégants</h2>
+            <div class="demo-section">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Ville</th>
+                            <th>Type</th>
+                            <th>Quantité</th>
+                            <th>Montant</th>
+                            <th>Statut</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Antananarivo</td>
+                            <td><span class="badge badge-nature">Nature</span></td>
+                            <td>100 kg</td>
+                            <td>200,000 Ar</td>
+                            <td><span class="status status-complet">✓ Complet</span></td>
+                        </tr>
+                        <tr>
+                            <td>Toamasina</td>
+                            <td><span class="badge badge-materiau">Matériau</span></td>
+                            <td>50 unités</td>
+                            <td>1,250,000 Ar</td>
+                            <td><span class="status status-partiel">50%</span></td>
+                        </tr>
+                        <tr>
+                            <td>Mahajanga</td>
+                            <td><span class="badge badge-argent">Argent</span></td>
+                            <td>500,000 Ar</td>
+                            <td>500,000 Ar</td>
+                            <td><span class="status status-vide">⚠ Vide</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Badges Demo -->
+        <div class="section" id="badges">
+            <h2>Badges et Status</h2>
+            <div class="demo-section">
+                <div class="demo-title">Catégories</div>
+                <div class="component-grid">
+                    <span class="badge badge-nature">Nature</span>
+                    <span class="badge badge-materiau">Matériau</span>
+                    <span class="badge badge-argent">Argent</span>
+                </div>
+                
+                <div class="demo-title">Status</div>
+                <div class="component-grid">
+                    <span class="status status-complet">✓ Complet</span>
+                    <span class="status status-partiel">50% Partiel</span>
+                    <span class="status status-vide">⚠ Vide</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alerts Demo -->
+        <div class="section" id="alerts">
+            <h2>Alertes Informatives</h2>
+            <div class="alert alert-success">
+                <strong>✅ Succès :</strong> Opération effectuée avec succès !
+            </div>
+            <div class="alert alert-info">
+                <strong>ℹ️ Information :</strong> Voici une information importante.
+            </div>
+            <div class="alert alert-warning">
+                <strong>⚠️ Attention :</strong> Veuillez vérifier les données avant de continuer.
+            </div>
+            <div class="alert alert-danger">
+                <strong>❌ Erreur :</strong> Une erreur s'est produite lors du traitement.
+            </div>
+        </div>
+
+        <!-- Forms Demo -->
+        <div class="section" id="forms">
+            <h2>Formulaires Modernes</h2>
+            <div class="demo-section">
+                <div class="form-container">
+                    <div class="form-group">
+                        <label for="demo-input">Champ de Texte <span class="required">*</span></label>
+                        <input type="text" id="demo-input" class="form-control" placeholder="Entrez une valeur">
+                        <small class="form-text">Texte d'aide pour le champ</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="demo-select">Liste Déroulante</label>
+                        <select id="demo-select" class="form-control">
+                            <option>Option 1</option>
+                            <option>Option 2</option>
+                            <option>Option 3</option>
+                        </select>
+                    </div>
+                    
+                    <div class="valeur-display">
+                        <strong>Montant Total : 1,100,000 Ar</strong>
+                    </div>
+                    
+                    <div class="form-actions-center">
+                        <button class="btn btn-secondary">Annuler</button>
+                        <button class="btn btn-success">Enregistrer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Box Demo -->
+        <div class="section">
+            <h2>Boîtes d'Information</h2>
+            <div class="info-box">
+                <h3>💡 À propos</h3>
+                <p>Voici une boîte d'information élégante avec des éléments structurés :</p>
+                <ul>
+                    <li>Design moderne avec dégradés subtils</li>
+                    <li>Bordure colorée pour attirer l'attention</li>
+                    <li>Ombres douces pour la profondeur</li>
+                    <li>Transitions fluides au survol</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Animation Demo -->
+        <div class="section">
+            <h2>Animations et Transitions</h2>
+            <div class="demo-section">
+                <p class="loading">⏳ Animation de chargement pulsante...</p>
+                <div style="margin-top: 20px;">
+                    <p><strong>Survolez les éléments pour voir les animations :</strong></p>
+                    <div class="component-grid" style="margin-top: 15px;">
+                        <div class="stat-card">
+                            <div class="stat-icon">🎨</div>
+                            <div class="stat-content">
+                                <div class="stat-label">Hover Me</div>
+                                <div class="stat-value">↑</div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary">Hover & Click</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Responsive Demo -->
+        <div class="section">
+            <h2>Design Responsive</h2>
+            <div class="info-box">
+                <h3>📱 Adaptabilité</h3>
+                <p>Le design s'adapte automatiquement aux différentes tailles d'écran :</p>
+                <ul>
+                    <li><strong>Desktop</strong> (> 768px) : Grilles multi-colonnes, navigation horizontale</li>
+                    <li><strong>Tablet</strong> (480px - 768px) : Grilles ajustées, éléments empilés</li>
+                    <li><strong>Mobile</strong> (< 480px) : Navigation verticale, boutons full-width</li>
+                </ul>
+                <p style="margin-top: 15px;">
+                    <em>Redimensionnez votre navigateur pour voir les changements !</em>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 BNGRC - Design Professionnel - Projet Final S3</p>
+    </footer>
+
+    <script>
+        // Démonstration des animations
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 200);
+            });
+        });
+
+        // Smooth scroll pour les liens d'ancrage
+        document.querySelectorAll('.main-nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
