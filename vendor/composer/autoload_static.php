@@ -13,45 +13,73 @@ class ComposerStaticInit4b3a253f57d31d773b6986822b8dc6cf
     );
 
     public static $prefixLengthsPsr4 = array (
-        'f' =>
+        'f' => 
         array (
             'flight\\' => 7,
         ),
-        'T' =>
+        'T' => 
         array (
             'Tracy\\' => 6,
         ),
-        'N' =>
+        'N' => 
         array (
             'Nette\\' => 6,
         ),
-        'A' =>
+        'A' => 
         array (
+            'App\\' => 4,
             'Ahc\\Cli\\' => 8,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'flight\\' =>
+        'flight\\' => 
         array (
             0 => __DIR__ . '/..' . '/flightphp/runway/src',
         ),
-        'Tracy\\' =>
+        'Tracy\\' => 
         array (
             0 => __DIR__ . '/..' . '/tracy/tracy/src',
         ),
-        'Nette\\' =>
+        'Nette\\' => 
         array (
             0 => __DIR__ . '/..' . '/nette/php-generator/src',
             1 => __DIR__ . '/..' . '/nette/utils/src',
         ),
-        'Ahc\\Cli\\' =>
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app',
+        ),
+        'Ahc\\Cli\\' => 
         array (
             0 => __DIR__ . '/..' . '/adhocore/cli/src',
         ),
     );
 
     public static $classMap = array (
+        'Ahc\\Cli\\Application' => __DIR__ . '/..' . '/adhocore/cli/src/Application.php',
+        'Ahc\\Cli\\Exception' => __DIR__ . '/..' . '/adhocore/cli/src/Exception.php',
+        'Ahc\\Cli\\Exception\\InvalidArgumentException' => __DIR__ . '/..' . '/adhocore/cli/src/Exception/InvalidArgumentException.php',
+        'Ahc\\Cli\\Exception\\InvalidParameterException' => __DIR__ . '/..' . '/adhocore/cli/src/Exception/InvalidParameterException.php',
+        'Ahc\\Cli\\Exception\\RuntimeException' => __DIR__ . '/..' . '/adhocore/cli/src/Exception/RuntimeException.php',
+        'Ahc\\Cli\\Helper\\InflectsString' => __DIR__ . '/..' . '/adhocore/cli/src/Helper/InflectsString.php',
+        'Ahc\\Cli\\Helper\\Normalizer' => __DIR__ . '/..' . '/adhocore/cli/src/Helper/Normalizer.php',
+        'Ahc\\Cli\\Helper\\OutputHelper' => __DIR__ . '/..' . '/adhocore/cli/src/Helper/OutputHelper.php',
+        'Ahc\\Cli\\Helper\\Shell' => __DIR__ . '/..' . '/adhocore/cli/src/Helper/Shell.php',
+        'Ahc\\Cli\\Helper\\Terminal' => __DIR__ . '/..' . '/adhocore/cli/src/Helper/Terminal.php',
+        'Ahc\\Cli\\IO\\Interactor' => __DIR__ . '/..' . '/adhocore/cli/src/IO/Interactor.php',
+        'Ahc\\Cli\\Input\\Argument' => __DIR__ . '/..' . '/adhocore/cli/src/Input/Argument.php',
+        'Ahc\\Cli\\Input\\Command' => __DIR__ . '/..' . '/adhocore/cli/src/Input/Command.php',
+        'Ahc\\Cli\\Input\\Groupable' => __DIR__ . '/..' . '/adhocore/cli/src/Input/Groupable.php',
+        'Ahc\\Cli\\Input\\Option' => __DIR__ . '/..' . '/adhocore/cli/src/Input/Option.php',
+        'Ahc\\Cli\\Input\\Parameter' => __DIR__ . '/..' . '/adhocore/cli/src/Input/Parameter.php',
+        'Ahc\\Cli\\Input\\Parser' => __DIR__ . '/..' . '/adhocore/cli/src/Input/Parser.php',
+        'Ahc\\Cli\\Input\\Reader' => __DIR__ . '/..' . '/adhocore/cli/src/Input/Reader.php',
+        'Ahc\\Cli\\Output\\Color' => __DIR__ . '/..' . '/adhocore/cli/src/Output/Color.php',
+        'Ahc\\Cli\\Output\\Cursor' => __DIR__ . '/..' . '/adhocore/cli/src/Output/Cursor.php',
+        'Ahc\\Cli\\Output\\ProgressBar' => __DIR__ . '/..' . '/adhocore/cli/src/Output/ProgressBar.php',
+        'Ahc\\Cli\\Output\\Table' => __DIR__ . '/..' . '/adhocore/cli/src/Output/Table.php',
+        'Ahc\\Cli\\Output\\Writer' => __DIR__ . '/..' . '/adhocore/cli/src/Output/Writer.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Nette\\ArgumentOutOfRangeException' => __DIR__ . '/..' . '/nette/utils/src/exceptions.php',
         'Nette\\DeprecatedException' => __DIR__ . '/..' . '/nette/utils/src/exceptions.php',
@@ -170,6 +198,7 @@ class ComposerStaticInit4b3a253f57d31d773b6986822b8dc6cf
         'Tracy\\OutputDebugger' => __DIR__ . '/..' . '/tracy/tracy/src/Tracy/OutputDebugger/OutputDebugger.php',
         'Tracy\\ProductionStrategy' => __DIR__ . '/..' . '/tracy/tracy/src/Tracy/Debugger/ProductionStrategy.php',
         'Tracy\\SessionStorage' => __DIR__ . '/..' . '/tracy/tracy/src/Tracy/Session/SessionStorage.php',
+        'flight\\commands\\AbstractBaseCommand' => __DIR__ . '/..' . '/flightphp/runway/src/commands/AbstractBaseCommand.php',
         'flight\\debug\\database\\PdoQueryCapture' => __DIR__ . '/..' . '/flightphp/tracy-extensions/src/debug/database/PdoQueryCapture.php',
         'flight\\debug\\database\\PdoQueryCaptureStatement' => __DIR__ . '/..' . '/flightphp/tracy-extensions/src/debug/database/PdoQueryCaptureStatement.php',
         'flight\\debug\\tracy\\DatabaseExtension' => __DIR__ . '/..' . '/flightphp/tracy-extensions/src/debug/tracy/DatabaseExtension.php',

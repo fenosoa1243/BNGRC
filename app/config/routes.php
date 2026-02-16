@@ -13,9 +13,7 @@ use App\Controllers\DistributionController;
 // ========================================
 // ROUTE PAR DÉFAUT
 // ========================================
-Flight::route('/', function () {
-    Flight::redirect('/dashboard');
-});
+Flight::route('/', 'App\Controllers\DashboardController@index');
 
 // ========================================
 // DASHBOARD
