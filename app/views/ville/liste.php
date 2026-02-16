@@ -2,8 +2,9 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liste des Villes - BNGRC</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css">
 </head>
 <body>
     <div class="container">
@@ -13,11 +14,13 @@
         </header>
 
         <nav class="main-nav">
-            <a href="/dashboard">📊 Dashboard</a>
-            <a href="/villes" class="active">🏙️ Villes</a>
-            <a href="/besoins">📋 Besoins</a>
-            <a href="/dons">🎁 Dons</a>
-            <a href="/distributions">📦 Distributions</a>
+            <a href="<?= BASE_URL ?>/dashboard">📊 Dashboard</a>
+            <a href="<?= BASE_URL ?>/villes" class="active">🏙️ Villes</a>
+            <a href="<?= BASE_URL ?>/besoins">📋 Besoins</a>
+            <a href="<?= BASE_URL ?>/dons">🎁 Dons</a>
+            <a href="<?= BASE_URL ?>/distributions">📦 Distributions</a>
+            <a href="<?= BASE_URL ?>/achats">🛒 Achats</a>
+            <a href="<?= BASE_URL ?>/recap">📈 Récapitulatif</a>
         </nav>
 
         <?php if(isset($_GET['success'])): ?>
@@ -35,7 +38,7 @@
         <div class="section">
             <div class="section-header">
                 <h2>🏙️ Villes Enregistrées</h2>
-                <a href="/villes/nouveau" class="btn btn-primary">➕ Nouvelle Ville</a>
+                <a href="<?= BASE_URL ?>/villes/nouveau" class="btn btn-primary">➕ Nouvelle Ville</a>
             </div>
 
             <table class="table">
@@ -57,8 +60,8 @@
                                 <td><strong><?php echo htmlspecialchars($ville['nom_ville']); ?></strong></td>
                                 <td><?php echo htmlspecialchars($ville['region']); ?></td>
                                 <td>
-                                    <a href="/villes/modifier/<?php echo $ville['id_ville']; ?>" class="btn-small btn-info">✏️ Modifier</a>
-                                    <a href="/villes/supprimer/<?php echo $ville['id_ville']; ?>" 
+                                    <a href="<?= BASE_URL ?>/villes/modifier/<?php echo $ville['id_ville']; ?>" class="btn-small btn-info">✏️ Modifier</a>
+                                    <a href="<?= BASE_URL ?>/villes/supprimer/<?php echo $ville['id_ville']; ?>" 
                                        class="btn-small btn-danger" 
                                        onclick="return confirm('Voulez-vous vraiment supprimer cette ville ?')">🗑️ Supprimer</a>
                                 </td>

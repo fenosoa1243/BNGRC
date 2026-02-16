@@ -49,8 +49,8 @@ return [
         'host'     => 'localhost',
         'port'     => '3306',                  // Port par défaut MySQL
         'dbname'   => 'bngrc_dons',              // Nom de votre base MySQL
-        'user'     => 'root',                  // À changer selon votre utilisateur MySQL
-        'password' => '',                      // À changer selon votre mot de passe
+        'user'     => 'debian-sys-maint',                  // À changer selon votre utilisateur MySQL
+        'password' => 'K1myn2Gbvk1awnNz',                      // À changer selon votre mot de passe
         'charset'  => 'utf8mb4',               // Recommandé pour un bon support UTF-8
     ],
 ];
