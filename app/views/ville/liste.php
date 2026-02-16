@@ -19,6 +19,8 @@
             <a href="<?= BASE_URL ?>/besoins">📋 Besoins</a>
             <a href="<?= BASE_URL ?>/dons">🎁 Dons</a>
             <a href="<?= BASE_URL ?>/distributions">📦 Distributions</a>
+            <a href="<?= BASE_URL ?>/achats">🛒 Achats</a>
+            <a href="<?= BASE_URL ?>/recap">📈 Récapitulatif</a>
         </nav>
 
         <?php if(isset($_GET['success'])): ?>
