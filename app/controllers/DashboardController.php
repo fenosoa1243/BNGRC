@@ -4,6 +4,9 @@ namespace App\Controllers;
 
 use Flight;
 
+// Le chemin doit pointer vers le dossier 'app', pas 'app/controllers'
+Flight::path(__DIR__ . '/../app');
+
 class DashboardController {
     
     public function index() {
