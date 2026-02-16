@@ -60,6 +60,8 @@ class RecapController {
                 : 0;
             
             // Récupérer les statistiques par ville
+            // Note: Le EXISTS dans le LEFT JOIN assure que nous ne comptons que les distributions
+            // dont le don correspond au même type de besoin que celui enregistré pour la ville
             $sql = "SELECT 
                     v.nom_ville,
                     v.region,
@@ -77,6 +79,7 @@ class RecapController {
             $stats_par_ville = $stmt->fetchAll(\PDO::FETCH_ASSOC);
             
             // Récupérer les statistiques par catégorie
+            // Note: Même logique que ci-dessus pour faire correspondre les types de dons et besoins
             $sql = "SELECT 
                     t.categorie,
                     t.nom_type,

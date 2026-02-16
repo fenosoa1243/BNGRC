@@ -70,7 +70,8 @@ class AchatController {
         
         $besoins_restants = $this->achatModel->query($sql);
         
-        // Récupérer le pourcentage de frais
+        // Récupérer le pourcentage de frais d'achat depuis la configuration
+        // Retourne 10% par défaut si la configuration n'existe pas encore en base
         $frais_pourcentage = $this->configModel->getValeur('frais_achat_pourcentage', 10);
         
         // Récupérer les dons d'argent disponibles
@@ -99,7 +100,8 @@ class AchatController {
             $prix_unitaire = Flight::request()->data->prix_unitaire;
             $mode = Flight::request()->data->mode ?? 'simule'; // 'simule' ou 'valide'
             
-            // Récupérer le pourcentage de frais
+            // Récupérer le pourcentage de frais d'achat depuis la configuration
+            // Retourne 10% par défaut si la configuration n'existe pas encore en base
             $frais_pourcentage = $this->configModel->getValeur('frais_achat_pourcentage', 10);
             
             // Calculer les montants

@@ -19,6 +19,8 @@
             <a href="/besoins">📋 Besoins</a>
             <a href="/dons">🎁 Dons</a>
             <a href="/distributions">📦 Distributions</a>
+            <a href="/achats">🛒 Achats</a>
+            <a href="/recap">📈 Récapitulation</a>
         </nav>
 
         <div class="stats-container">
@@ -66,7 +68,9 @@
         <div class="quick-actions">
             <a href="/besoins/nouveau" class="btn btn-primary">➕ Saisir un Besoin</a>
             <a href="/dons/nouveau" class="btn btn-success">🎁 Enregistrer un Don</a>
+            <a href="/achats/nouveau" class="btn btn-info">🛒 Nouvel Achat</a>
             <a href="/distributions/simuler" class="btn btn-warning">⚡ Simuler Dispatch</a>
+            <a href="/recap" class="btn btn-secondary">📈 Récapitulation</a>
         </div>
 
         <div class="section">
