@@ -54,6 +54,30 @@ CREATE TABLE distribution (
     FOREIGN KEY (id_ville) REFERENCES ville(id_ville) ON DELETE CASCADE
 );
 
+-- Table des configurations
+CREATE TABLE IF NOT EXISTS configuration (
+    id_config INT PRIMARY KEY AUTO_INCREMENT,
+    cle VARCHAR(100) NOT NULL UNIQUE,
+    valeur TEXT NOT NULL,
+    description VARCHAR(255),
+    date_modification DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Table des achats (purchases)
+CREATE TABLE IF NOT EXISTS achat (
+    id_achat INT PRIMARY KEY AUTO_INCREMENT,
+    id_ville INT NOT NULL,
+    id_type INT NOT NULL,
+    quantite DECIMAL(10,2) NOT NULL,
+    prix_unitaire DECIMAL(10,2) NOT NULL,
+    frais_achat DECIMAL(5,2) NOT NULL COMMENT 'Pourcentage des frais d''achat',
+    montant_total DECIMAL(10,2) NOT NULL COMMENT 'Montant avec frais inclus',
+    date_achat DATETIME DEFAULT CURRENT_TIMESTAMP,
+    statut ENUM('simule', 'valide') DEFAULT 'simule',
+    FOREIGN KEY (id_ville) REFERENCES ville(id_ville) ON DELETE CASCADE,
+    FOREIGN KEY (id_type) REFERENCES type_besoin(id_type) ON DELETE CASCADE
+);
+
 -- Insertion des villes
 INSERT INTO ville (nom_ville, region) VALUES
 ('Antananarivo', 'Analamanga'),
@@ -81,6 +105,11 @@ INSERT INTO type_besoin (nom_type, categorie, prix_unitaire, unite) VALUES
 -- Insertion des types de besoins - ARGENT
 INSERT INTO type_besoin (nom_type, categorie, prix_unitaire, unite) VALUES
 ('Argent', 'argent', 1.00, 'Ar');
+
+-- Insertion de la configuration par défaut
+INSERT INTO configuration (cle, valeur, description) VALUES
+('frais_achat_pourcentage', '10', 'Pourcentage des frais d''achat appliqués aux achats (ex: 10 pour 10%)')
+ON DUPLICATE KEY UPDATE valeur = valeur;
 
 -- Vue: Tableau de bord
 CREATE OR REPLACE VIEW v_dashboard AS

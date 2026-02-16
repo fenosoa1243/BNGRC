@@ -9,6 +9,8 @@ use App\Controllers\VilleController;
 use App\Controllers\BesoinController;
 use App\Controllers\DonController;
 use App\Controllers\DistributionController;
+use App\Controllers\AchatController;
+use App\Controllers\RecapController;
 
 // ========================================
 // ROUTE PAR DÉFAUT
@@ -53,6 +55,22 @@ Flight::route('POST /dons/enregistrer', [DonController::class, 'enregistrer']);
 Flight::route('GET /distributions', [DistributionController::class, 'liste']);
 Flight::route('GET /distributions/simuler', [DistributionController::class, 'simuler']);
 Flight::route('POST /distributions/executer', [DistributionController::class, 'executer']);
+
+// ========================================
+// ACHATS (PURCHASES)
+// ========================================
+Flight::route('GET /achats', [AchatController::class, 'liste']);
+Flight::route('GET /achats/nouveau', [AchatController::class, 'form']);
+Flight::route('POST /achats/enregistrer', [AchatController::class, 'enregistrer']);
+Flight::route('GET /achats/simuler', [AchatController::class, 'simuler']);
+Flight::route('POST /achats/valider', [AchatController::class, 'valider']);
+Flight::route('POST /achats/annuler', [AchatController::class, 'annulerSimulation']);
+
+// ========================================
+// RÉCAPITULATION
+// ========================================
+Flight::route('GET /recap', [RecapController::class, 'index']);
+Flight::route('GET /api/recap/stats', [RecapController::class, 'getStats']);
 
 // ========================================
 // ROUTES API (JSON)
