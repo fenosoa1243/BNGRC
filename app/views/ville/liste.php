@@ -1,75 +1,51 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Liste des Villes - BNGRC</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>🏛️ BNGRC - Gestion des Dons</h1>
-            <p class="subtitle">Liste des Villes</p>
-        </header>
+<?php
+$title      = 'Villes';
+$subtitle   = 'Gestion des villes';
+$active_nav = 'villes';
+$action_btn = ['url' => BASE_URL . '/villes/nouveau', 'label' => '➕ Nouvelle Ville'];
 
-        <nav class="main-nav">
-            <a href="/dashboard">📊 Dashboard</a>
-            <a href="/villes" class="active">🏙️ Villes</a>
-            <a href="/besoins">📋 Besoins</a>
-            <a href="/dons">🎁 Dons</a>
-            <a href="/distributions">📦 Distributions</a>
-        </nav>
+ob_start();
+?>
 
-        <?php if(isset($_GET['success'])): ?>
-            <div class="alert alert-success">
-                <?php
-                switch($_GET['success']) {
-                    case 'create': echo '✓ Ville créée avec succès'; break;
-                    case 'update': echo '✓ Ville modifiée avec succès'; break;
-                    case 'delete': echo '✓ Ville supprimée avec succès'; break;
-                }
-                ?>
-            </div>
-        <?php endif; ?>
+<?php if(isset($_GET['success'])): ?>
+    <div class="alert alert-success">
+        ✅ <?= ['create'=>'Ville créée','update'=>'Ville modifiée','delete'=>'Ville supprimée'][$_GET['success']] ?? 'Succès' ?> avec succès !
+    </div>
+<?php endif; ?>
 
-        <div class="section">
-            <div class="section-header">
-                <h2>🏙️ Villes Enregistrées</h2>
-                <a href="/villes/nouveau" class="btn btn-primary">➕ Nouvelle Ville</a>
-            </div>
-
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nom de la Ville</th>
-                        <th>Région</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php if(empty($villes)): ?>
-                        <tr><td colspan="4" class="text-center">Aucune ville enregistrée</td></tr>
-                    <?php else: ?>
-                        <?php foreach($villes as $ville): ?>
-                            <tr>
-                                <td><?php echo $ville['id_ville']; ?></td>
-                                <td><strong><?php echo htmlspecialchars($ville['nom_ville']); ?></strong></td>
-                                <td><?php echo htmlspecialchars($ville['region']); ?></td>
-                                <td>
-                                    <a href="/villes/modifier/<?php echo $ville['id_ville']; ?>" class="btn-small btn-info">✏️ Modifier</a>
-                                    <a href="/villes/supprimer/<?php echo $ville['id_ville']; ?>" 
-                                       class="btn-small btn-danger" 
-                                       onclick="return confirm('Voulez-vous vraiment supprimer cette ville ?')">🗑️ Supprimer</a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-                </tbody>
-            </table>
-        </div>
+<div class="card">
+    <div class="card-header">
+        <span class="card-title">🏙️ Villes enregistrées</span>
+        <a href="<?= BASE_URL ?>/villes/nouveau" class="btn btn-primary btn-sm">➕ Nouvelle Ville</a>
     </div>
 
-    <footer><p>© 2026 BNGRC - Projet Final S3</p></footer>
-</body>
-</html>
+    <?php if(empty($villes)): ?>
+        <div class="empty-state"><div class="empty-icon">🏙️</div><p>Aucune ville enregistrée.</p></div>
+    <?php else: ?>
+        <table class="data-table">
+            <thead>
+                <tr><th>ID</th><th>Nom de la Ville</th><th>Région</th><th>Actions</th></tr>
+            </thead>
+            <tbody>
+                <?php foreach($villes as $v): ?>
+                <tr>
+                    <td><?= $v['id_ville'] ?></td>
+                    <td><strong><?= htmlspecialchars($v['nom_ville']) ?></strong></td>
+                    <td><?= htmlspecialchars($v['region']) ?></td>
+                    <td>
+                        <div class="action-buttons">
+                            <a href="<?= BASE_URL ?>/villes/modifier/<?= $v['id_ville'] ?>" class="btn btn-info btn-sm">✏️ Modifier</a>
+                            <a href="<?= BASE_URL ?>/villes/supprimer/<?= $v['id_ville'] ?>" class="btn btn-danger btn-sm"
+                               onclick="return confirm('Supprimer cette ville ?')">🗑️ Supprimer</a>
+                        </div>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php endif; ?>
+</div>
+
+<?php
+$content = ob_get_clean();
+Flight::render('layout/main', compact('title','subtitle','active_nav','action_btn','content'));

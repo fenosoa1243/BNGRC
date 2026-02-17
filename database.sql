@@ -105,3 +105,16 @@ LEFT JOIN distribution dist ON v.id_ville = dist.id_ville
     AND EXISTS (SELECT 1 FROM don d WHERE d.id_don = dist.id_don AND d.id_type = tb.id_type)
 GROUP BY v.id_ville, v.nom_ville, v.region, tb.id_type, tb.nom_type, tb.categorie, tb.unite, tb.prix_unitaire
 HAVING besoin_total > 0 OR don_recu > 0;
+
+-- =============================================
+-- Table de configuration
+-- =============================================
+CREATE TABLE IF NOT EXISTS configuration (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    cle VARCHAR(50) UNIQUE NOT NULL,
+    valeur TEXT NOT NULL,
+    date_modification TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Valeur par défaut pour les frais d'achat
+INSERT INTO configuration (cle, valeur) VALUES ('frais_achat', '10') ON DUPLICATE KEY UPDATE valeur=valeur;

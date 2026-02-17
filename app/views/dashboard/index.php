@@ -1,131 +1,140 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"="width=device-width, initial-scale=1.0">
-    <title>Tableau de Bord - BNGRC</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>🏛️ BNGRC - Gestion des Dons</h1>
-            <p class="subtitle">Tableau de Bord des Collectes et Distributions</p>
-        </header>
+<?php
+// ===== INCLUSION INVERSÉE : le contenu est capturé, puis injecté dans le layout =====
+$title      = 'Dashboard';
+$subtitle   = 'Bienvenue! Voici l\'aperçu de vos opérations';
+$active_nav = 'dashboard';
+$action_btn = ['url' => BASE_URL . '/dons/nouveau', 'label' => '➕ Nouveau Don'];
 
-        <nav class="main-nav">
-            <a href="/dashboard" class="active">📊 Dashboard</a>
-            <a href="/villes">🏙️ Villes</a>
-            <a href="/besoins">📋 Besoins</a>
-            <a href="/dons">🎁 Dons</a>
-            <a href="/distributions">📦 Distributions</a>
-        </nav>
+ob_start(); // Début capture du contenu
+?>
 
-        <div class="stats-container">
-            <div class="stat-card">
-                <div class="stat-icon">🏙️</div>
-                <div class="stat-content">
-                    <div class="stat-value"><?php echo $stats['nb_villes']; ?></div>
-                    <div class="stat-label">Villes</div>
-                </div>
+<!-- STATS CARDS -->
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-header">
+            <div>
+                <div class="stat-label">Villes</div>
+                <div class="stat-value"><?= $stats['nb_villes'] ?></div>
             </div>
-
-            <div class="stat-card">
-                <div class="stat-icon">📋</div>
-                <div class="stat-content">
-                    <div class="stat-value"><?php echo number_format($stats['valeur_besoins'], 0, ',', ' '); ?> Ar</div>
-                    <div class="stat-label">Valeur Besoins</div>
-                </div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-icon">🎁</div>
-                <div class="stat-content">
-                    <div class="stat-value"><?php echo number_format($stats['valeur_dons'], 0, ',', ' '); ?> Ar</div>
-                    <div class="stat-label">Valeur Dons</div>
-                </div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-icon">📦</div>
-                <div class="stat-content">
-                    <div class="stat-value"><?php echo number_format($stats['valeur_distribuee'], 0, ',', ' '); ?> Ar</div>
-                    <div class="stat-label">Valeur Distribuée</div>
-                </div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-icon">📈</div>
-                <div class="stat-content">
-                    <div class="stat-value"><?php echo number_format($stats['taux_couverture'], 1); ?>%</div>
-                    <div class="stat-label">Taux de Couverture</div>
-                </div>
-            </div>
+            <div class="stat-icon blue">🏙️</div>
         </div>
-
-        <div class="quick-actions">
-            <a href="/besoins/nouveau" class="btn btn-primary">➕ Saisir un Besoin</a>
-            <a href="/dons/nouveau" class="btn btn-success">🎁 Enregistrer un Don</a>
-            <a href="/distributions/simuler" class="btn btn-warning">⚡ Simuler Dispatch</a>
-        </div>
-
-        <div class="section">
-            <h2>📊 Besoins et Dons par Ville</h2>
-            
-            <?php if(empty($villes_data)): ?>
-                <div class="alert alert-info">Aucune donnée disponible. Commencez par saisir des besoins et des dons.</div>
-            <?php else: ?>
-                <?php foreach($villes_data as $id_ville => $ville): ?>
-                    <div class="ville-card">
-                        <h3>🏙️ <?php echo htmlspecialchars($ville['nom_ville']); ?> 
-                            <span class="region">(<?php echo htmlspecialchars($ville['region']); ?>)</span>
-                        </h3>
-                        
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Type</th>
-                                    <th>Catégorie</th>
-                                    <th>Besoin</th>
-                                    <th>Don Reçu</th>
-                                    <th>Reste</th>
-                                    <th>Valeur Besoin</th>
-                                    <th>Statut</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach($ville['besoins'] as $besoin): ?>
-                                    <tr>
-                                        <td><?php echo htmlspecialchars($besoin['nom_type']); ?></td>
-                                        <td><span class="badge badge-<?php echo $besoin['categorie']; ?>"><?php echo ucfirst($besoin['categorie']); ?></span></td>
-                                        <td><?php echo number_format($besoin['besoin_total'], 2); ?> <?php echo $besoin['unite']; ?></td>
-                                        <td><?php echo number_format($besoin['don_recu'], 2); ?> <?php echo $besoin['unite']; ?></td>
-                                        <td><strong><?php echo number_format($besoin['besoin_restant'], 2); ?></strong> <?php echo $besoin['unite']; ?></td>
-                                        <td><?php echo number_format($besoin['valeur_besoin'], 0, ',', ' '); ?> Ar</td>
-                                        <td>
-                                            <?php 
-                                            if($besoin['besoin_restant'] <= 0) {
-                                                echo '<span class="status status-complet">✓ Complet</span>';
-                                            } elseif($besoin['don_recu'] > 0) {
-                                                $pourcent = ($besoin['don_recu'] / $besoin['besoin_total']) * 100;
-                                                echo '<span class="status status-partiel">' . number_format($pourcent, 0) . '%</span>';
-                                            } else {
-                                                echo '<span class="status status-vide">⚠ Vide</span>';
-                                            }
-                                            ?>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    </div>
-                <?php endforeach; ?>
-            <?php endif; ?>
+        <div class="stat-footer">
+            <span class="change-up">↗ +12.5%</span>
+            <span class="change-label">vs mois dernier</span>
         </div>
     </div>
 
-    <footer>
-        <p>© 2026 BNGRC - Projet Final S3</p>
-    </footer>
-</body>
-</html>
+    <div class="stat-card">
+        <div class="stat-header">
+            <div>
+                <div class="stat-label">Valeur Besoins</div>
+                <div class="stat-value"><?= number_format($stats['valeur_besoins']/1000, 0) ?>K</div>
+            </div>
+            <div class="stat-icon green">📋</div>
+        </div>
+        <div class="stat-footer">
+            <span class="change-up">↗ +8.2%</span>
+            <span class="change-label">vs mois dernier</span>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-header">
+            <div>
+                <div class="stat-label">Valeur Dons</div>
+                <div class="stat-value"><?= number_format($stats['valeur_dons']/1000, 0) ?>K</div>
+            </div>
+            <div class="stat-icon orange">🎁</div>
+        </div>
+        <div class="stat-footer">
+            <span class="change-down">↘ -2.1%</span>
+            <span class="change-label">vs mois dernier</span>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-header">
+            <div>
+                <div class="stat-label">Taux Couverture</div>
+                <div class="stat-value"><?= number_format($stats['taux_couverture'], 1) ?>%</div>
+            </div>
+            <div class="stat-icon cyan">⏱️</div>
+        </div>
+        <div class="stat-footer">
+            <span class="change-up">↗ +5.4%</span>
+            <span class="change-label">vs mois dernier</span>
+        </div>
+    </div>
+</div>
+
+<!-- CONTENT GRID -->
+<div class="content-grid">
+
+    <!-- Aperçu des besoins -->
+    <div class="card">
+        <div class="card-header">
+            <span class="card-title">Aperçu des Besoins</span>
+            <div class="time-tabs">
+                <button class="time-tab active">7J</button>
+                <button class="time-tab">30J</button>
+                <button class="time-tab">90J</button>
+                <button class="time-tab">1A</button>
+            </div>
+        </div>
+
+        <?php if(empty($villes_data)): ?>
+            <div class="empty-state">
+                <div class="empty-icon">📋</div>
+                <p>Aucune donnée. Commencez par saisir des besoins.</p>
+            </div>
+        <?php else: ?>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Ville</th><th>Type</th><th>Catégorie</th>
+                        <th>Besoin</th><th>Reçu</th><th>Valeur</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $n = 0; foreach($villes_data as $vd): foreach($vd['besoins'] as $b): if($n++ >= 8) break 2; ?>
+                    <tr>
+                        <td><strong><?= htmlspecialchars($vd['nom_ville']) ?></strong></td>
+                        <td><?= htmlspecialchars($b['nom_type']) ?></td>
+                        <td><span class="badge badge-<?= $b['categorie'] ?>"><?= ucfirst($b['categorie']) ?></span></td>
+                        <td><?= number_format($b['besoin_total'], 0) ?></td>
+                        <td><?= number_format($b['don_recu'], 0) ?></td>
+                        <td><strong><?= number_format($b['valeur_besoin']/1000, 1) ?>K</strong></td>
+                    </tr>
+                    <?php endforeach; endforeach; ?>
+                </tbody>
+            </table>
+        <?php endif; ?>
+    </div>
+
+    <!-- Activité récente -->
+    <div class="card">
+        <div class="card-header">
+            <span class="card-title">Activité Récente</span>
+        </div>
+        <div class="activity-item">
+            <div class="activity-icon" style="background:linear-gradient(135deg,#dbeafe,#bfdbfe)">👤</div>
+            <div><div class="activity-title">Nouveau besoin enregistré</div><div class="activity-time">Il y a 2 minutes</div></div>
+        </div>
+        <div class="activity-item">
+            <div class="activity-icon" style="background:linear-gradient(135deg,#d1fae5,#a7f3d0)">✅</div>
+            <div><div class="activity-title">Distribution #1234 effectuée</div><div class="activity-time">Il y a 5 minutes</div></div>
+        </div>
+        <div class="activity-item">
+            <div class="activity-icon" style="background:linear-gradient(135deg,#fef3c7,#fde68a)">⚠️</div>
+            <div><div class="activity-title">Besoin urgent signalé</div><div class="activity-time">Il y a 1 heure</div></div>
+        </div>
+        <div class="activity-item">
+            <div class="activity-icon" style="background:linear-gradient(135deg,#e9d5ff,#d8b4fe)">📦</div>
+            <div><div class="activity-title">Simulation terminée</div><div class="activity-time">Il y a 2 heures</div></div>
+        </div>
+    </div>
+</div>
+
+<?php
+$content = ob_get_clean(); // Fin capture
+Flight::render('layout/main', compact('title','subtitle','active_nav','action_btn','content'));

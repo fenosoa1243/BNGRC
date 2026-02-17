@@ -53,4 +53,13 @@ return [
         'password' => '',                      // À changer selon votre mot de passe
         'charset'  => 'utf8mb4',               // Recommandé pour un bon support UTF-8
     ],
+
+    // 'database' => [
+    //     'host'     => '172.16.7.131',
+    //     'port'     => '3306',                  // Port par défaut MySQL
+    //     'dbname'   => 'db_s2_ETU004301',              // Nom de votre base MySQL
+    //     'user'     => 'ETU004301',                  // À changer selon votre utilisateur MySQL
+    //     'password' => 'btIwdcyo',                      // À changer selon votre mot de passe
+    //     'charset'  => 'utf8mb4',               // Recommandé pour un bon support UTF-8
+    // ],
 ];

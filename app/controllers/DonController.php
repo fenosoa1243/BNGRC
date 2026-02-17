@@ -42,7 +42,7 @@ class DonController {
             ];
             
             $this->donModel->create($data);
-            Flight::redirect('/dons?success=create');
+            Flight::redirect(BASE_URL . '/dons?success=create');
         }
     }
 }
